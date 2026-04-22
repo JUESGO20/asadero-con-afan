@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menú — Asadero Con Afán</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preload" href="css/style.css" as="style">
+  <!-- Preconectar primero para ganar velocidad -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" media="print" onload="this.media='all'">
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#FF5200">
+  <link rel="icon" type="image/png" sizes="192x192" href="img/icon-192.png">
+  <link rel="apple-touch-icon" href="img/icon-192.png">
+</head>
+<body>
+
+  <nav class="navbar">
+   <a href="index.html" class="logo">🔥 Asadero Con Afán</a>
+  
+   <!-- Botón hamburguesa (solo visible en móvil) -->
+   <button class="hamburguesa" id="hamburguesa" aria-label="Abrir menú">
+     <span></span>
+     <span></span>
+     <span></span>
+   </button>
+     
+    <ul class="nav-links" id="nav-links">
+     <li><a href="index.html">Inicio</a></li>
+     <li><a href="menu.html">Menú</a></li>
+     <li><a href="equipo.html">Nuestro equipo</a></li>
+     <li><a href="contacto.html">Contáctanos</a></li>
+    </ul>
+  </nav>
+
+  <section class="pagina-header">
+    <h1>Nuestro menú</h1>
+    <p>Todo recién salido del asador</p>
+  </section>
+
+  <section class="menu">
+
+    <h2 class="categoria-titulo">🍗 Pollos</h2>
+    <div class="menu-grid">
+      <div class="tarjeta">
+        <img src="https://placehold.co/400x220/E85D04/ffffff?text=Pollo+Entero" alt="Pollo entero">
+        <div class="tarjeta-body">
+          <h3>Pollo asado entero</h3>
+          <p>Marinado en especias secretas, asado al carbón lentamente.</p>
+          <span class="precio">$35.000</span>
+          <a href="https://wa.me/573123256208?text=Quiero%20un%20pollo%20entero" class="btn-pedir" target="_blank">Pedir ahora</a>
+        </div>
+      </div>
+      <div class="tarjeta">
+        <img src="https://placehold.co/400x220/E85D04/ffffff?text=Medio+Pollo" alt="Medio pollo">
+        <div class="tarjeta-body">
+          <h3>Medio pollo</h3>
+          <p>Perfecto para compartir en pareja o como almuerzo completo.</p>
+          <span class="precio">$19.000</span>
+          <a href="https://wa.me/573123256208?text=Quiero%20medio%20pollo" class="btn-pedir" target="_blank">Pedir ahora</a>
+        </div>
+      </div>
+      <div class="tarjeta">
+        <img src="https://placehold.co/400x220/E85D04/ffffff?text=Presas+Sueltas" alt="Presas">
+        <div class="tarjeta-body">
+          <h3>Presas sueltas</h3>
+          <p>Pechuga, pierna o muslo. Tú eliges el corte que prefieras.</p>
+          <span class="precio">Desde $8.000</span>
+          <a href="https://wa.me/573123256208?text=Quiero%20pedir%20presas" class="btn-pedir" target="_blank">Pedir ahora</a>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="categoria-titulo">🍟 Acompañamientos</h2>
+    <div class="menu-grid">
+      <div class="tarjeta">
+        <img src="https://placehold.co/400x220/1a1a1a/ffffff?text=Papas+Fritas" alt="Papas fritas">
+        <div class="tarjeta-body">
+          <h3>Papas fritas</h3>
+          <p>Crocantes por fuera, suaves por dentro.</p>
+          <span class="precio">$5.000</span>
+          <a href="https://wa.me/573123256208?text=Quiero%20papas%20fritas" class="btn-pedir" target="_blank">Pedir ahora</a>
+        </div>
+      </div>
+      <div class="tarjeta">
+        <img src="https://placehold.co/400x220/1a1a1a/ffffff?text=Arroz" alt="Arroz">
+        <div class="tarjeta-body">
+          <h3>Arroz</h3>
+          <p>Arroz blanco al vapor, el acompañamiento clásico.</p>
+          <span class="precio">$4.000</span>
+          <a href="https://wa.me/573123256208?text=Quiero%20arroz" class="btn-pedir" target="_blank">Pedir ahora</a>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="categoria-titulo">🥤 Bebidas</h2>
+    <div class="menu-grid">
+      <div class="tarjeta">
+        <img src="https://placehold.co/400x220/1D9E75/ffffff?text=Jugos+Naturales" alt="Jugo natural">
+        <div class="tarjeta-body">
+          <h3>Jugos naturales</h3>
+          <p>Maracuyá, lulo, guanábana o mora. Frutas de temporada.</p>
+          <span class="precio">$4.000</span>
+          <a href="https://wa.me/573123256208?text=Quiero%20un%20jugo" class="btn-pedir" target="_blank">Pedir ahora</a>
+        </div>
+      </div>
+      <div class="tarjeta">
+        <img src="https://placehold.co/400x220/1D9E75/ffffff?text=Gaseosas" alt="Gaseosa">
+        <div class="tarjeta-body">
+          <h3>Gaseosas</h3>
+          <p>Coca-Cola, Sprite, Manzana. Bien fría.</p>
+          <span class="precio">$3.000</span>
+          <a href="https://wa.me/573123256208?text=Quiero%20una%20gaseosa" class="btn-pedir" target="_blank">Pedir ahora</a>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <a href="https://wa.me/573123256208?text=Hola!%20Quiero%20hacer%20un%20pedido"
+     class="whatsapp-flotante" target="_blank">💬</a>
+
+  <footer>
+    <p>© 2025 Asadero Con Afán — Hecho con ❤️ en Neiva</p>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

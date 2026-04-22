@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuestro equipo — Asadero Con Afán</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preload" href="css/style.css" as="style">
+  <!-- Preconectar primero para ganar velocidad -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" media="print" onload="this.media='all'">
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#FF5200">
+  <link rel="icon" type="image/png" sizes="192x192" href="img/icon-192.png">
+  <link rel="apple-touch-icon" href="img/icon-192.png">
+</head>
+<body>
+
+  <nav class="navbar">
+   <a href="index.html" class="logo">🔥 Asadero Con Afán</a>
+  
+   <!-- Botón hamburguesa (solo visible en móvil) -->
+   <button class="hamburguesa" id="hamburguesa" aria-label="Abrir menú">
+     <span></span>
+     <span></span>
+     <span></span>
+   </button>
+     
+    <ul class="nav-links" id="nav-links">
+     <li><a href="index.html">Inicio</a></li>
+     <li><a href="menu.html">Menú</a></li>
+     <li><a href="equipo.html">Nuestro equipo</a></li>
+     <li><a href="contacto.html">Contáctanos</a></li>
+    </ul>
+  </nav>
+
+  <section class="pagina-header">
+    <h1>Nuestro equipo</h1>
+    <p>Las personas detrás del mejor pollo de Neiva</p>
+  </section>
+
+  <section class="equipo">
+    <div class="equipo-grid">
+
+      <!-- Repite esta tarjeta por cada persona del equipo -->
+      <div class="persona-card">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" 
+             alt="Foto de María García" class="persona-foto">
+        <h3>María García</h3>
+        <span class="rol">Fundadora y administradora</span>
+        <p class="historia">
+          María fundó Asadero Con Afán hace [X] años con la receta de su abuela 
+          y las ganas de llevar sabor casero a toda Neiva. Su dedicación es la 
+          razón por la que cada pollo sabe a hogar.
+        </p>
+      </div>
+
+      <div class="persona-card">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" 
+             alt="Foto de Carlos Pérez" class="persona-foto">
+        <h3>Carlos Pérez</h3>
+        <span class="rol">Chef principal — Maestro asador</span>
+        <p class="historia">
+          Con 10 años de experiencia en el arte del asado al carbón, Carlos 
+          conoce el punto exacto de cada pieza. Su secreto: paciencia, buena 
+          leña y mucho cariño.
+        </p>
+      </div>
+
+      <div class="persona-card">
+        <img src="https://randomuser.me/api/portraits/women/68.jpg" 
+             alt="Foto de Laura Díaz" class="persona-foto">
+        <h3>Laura Díaz</h3>
+        <span class="rol">Atención al cliente</span>
+        <p class="historia">
+          Laura es el primer rostro amable que verás al llegar. Lleva 
+          [X] años siendo el corazón del servicio al cliente del asadero, 
+          siempre con una sonrisa lista.
+        </p>
+      </div>
+
+      <!-- Agrega más personas aquí -->
+
+    </div>
+  </section>
+
+  <section class="cta-equipo">
+    <h2>¿Quieres ser parte del equipo?</h2>
+    <p>Siempre buscamos personas apasionadas por el servicio y la buena comida.</p>
+    <a href="contacto.html" class="btn-primary">Ver vacantes disponibles</a>
+  </section>
+
+  <a href="https://wa.me/573123256208" class="whatsapp-flotante" target="_blank">💬</a>
+
+  <footer>
+    <p>© 2025 Asadero Con Afán — Hecho con ❤️ en Neiva</p>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contáctanos — Asadero Con Afán</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preload" href="css/style.css" as="style">
+  <!-- Preconectar primero para ganar velocidad -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" media="print" onload="this.media='all'">
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#FF5200">
+  <link rel="icon" type="image/png" sizes="192x192" href="img/icon-192.png">
+  <link rel="apple-touch-icon" href="img/icon-192.png">
+</head>
+<body>
+
+  <nav class="navbar">
+   <a href="index.html" class="logo">🔥 Asadero Con Afán</a>
+  
+   <!-- Botón hamburguesa (solo visible en móvil) -->
+   <button class="hamburguesa" id="hamburguesa" aria-label="Abrir menú">
+     <span></span>
+     <span></span>
+     <span></span>
+   </button>
+     
+    <ul class="nav-links" id="nav-links">
+     <li><a href="index.html">Inicio</a></li>
+     <li><a href="menu.html">Menú</a></li>
+     <li><a href="equipo.html">Nuestro equipo</a></li>
+     <li><a href="contacto.html">Contáctanos</a></li>
+    </ul>
+  </nav>
+
+  <section class="pagina-header">
+    <h1>Contáctanos</h1>
+    <p>Trabaja con nosotros o escríbenos</p>
+  </section>
+
+  <section class="contacto-pagina">
+
+    <!-- VACANTES -->
+    <div class="vacantes">
+      <h2>Vacantes disponibles</h2>
+      <div class="vacante-card">
+        <h3>Auxiliar de cocina</h3>
+        <p>Buscamos persona con actitud positiva, dispuesta a aprender. No se requiere experiencia previa.</p>
+        <span class="badge-vacante">Tiempo completo</span>
+      </div>
+      <div class="vacante-card">
+        <h3>Cajero / Atención al cliente</h3>
+        <p>Persona amable, responsable, con habilidades de comunicación. Experiencia deseable.</p>
+        <span class="badge-vacante">Tiempo completo</span>
+      </div>
+      <div class="vacante-card">
+        <h3>Repartidor</h3>
+        <p>Con moto propia, licencia de conducción vigente. Conocimiento de la ciudad de Neiva.</p>
+        <span class="badge-vacante">Medio tiempo</span>
+      </div>
+    </div>
+
+    <!-- FORMULARIO HOJA DE VIDA -->
+    <div class="formulario-contenedor">
+      <h2>Envía tu hoja de vida</h2>
+      <p class="form-sub">Completa el formulario y nos pondremos en contacto contigo.</p>
+
+      <!-- 
+        Usamos Formspree para enviar al correo sin necesitar servidor.
+        Reemplaza "tu-correo@gmail.com" con el correo real del asadero.
+        Ve a formspree.io, crea cuenta gratis y obtén tu endpoint.
+      -->
+      <form action="https://formspree.io/f/meepyjwo" method="POST" 
+            enctype="multipart/form-data" class="formulario-hv">
+
+        <div class="campo-grupo">
+          <label for="nombre">Nombre completo *</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
+        </div>
+
+        <div class="campo-grupo">
+          <label for="email">Correo electrónico *</label>
+          <input type="email" id="email" name="email" placeholder="tu@correo.com" required>
+        </div>
+
+        <div class="campo-grupo">
+          <label for="telefono">Teléfono / WhatsApp *</label>
+          <input type="tel" id="telefono" name="telefono" placeholder="300 000 0000" required>
+        </div>
+
+        <div class="campo-grupo">
+          <label for="vacante">Vacante a la que aplicas *</label>
+          <select id="vacante" name="vacante" required>
+            <option value="">— Selecciona una vacante —</option>
+            <option value="auxiliar-cocina">Auxiliar de cocina</option>
+            <option value="cajero">Cajero / Atención al cliente</option>
+            <option value="repartidor">Repartidor</option>
+            <option value="otra">Otra (explica abajo)</option>
+          </select>
+        </div>
+
+        <div class="campo-grupo">
+          <label for="mensaje">¿Por qué quieres trabajar con nosotros?</label>
+          <textarea id="mensaje" name="mensaje" rows="4" 
+                    placeholder="Cuéntanos algo sobre ti..."></textarea>
+        </div>
+
+        <div class="campo-grupo">
+          <label for="cv">Adjunta tu hoja de vida (PDF)</label>
+          <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx">
+          <small>Formatos aceptados: PDF, Word. Máximo 5MB.</small>
+        </div>
+
+        <button type="submit" class="btn-enviar">Enviar hoja de vida ✉️</button>
+
+      </form>
+    </div>
+
+  </section>
+
+  <a href="https://wa.me/573123256208" class="whatsapp-flotante" target="_blank">💬</a>
+
+  <footer>
+    <p>© 2025 Asadero Con Afán — Hecho con ❤️ en Neiva</p>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
