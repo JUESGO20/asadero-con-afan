@@ -2,14 +2,14 @@ const CACHE_NAME = 'asadero-con-afan-v1';
 
 // Archivos que se guardan para funcionar sin internet
 const ARCHIVOS_CACHE = [
-  '/',
-  '/index.html',
-  '/menu.html',
-  '/equipo.html',
-  '/contacto.html',
-  '/css/style.css',
-  '/js/main.js',
-  '/manifest.json'
+  '/asadero-con-afan/',
+  '/asadero-con-afan/index.html',
+  '/asadero-con-afan/menu.html',
+  '/asadero-con-afan/equipo.html',
+  '/asadero-con-afan/contacto.html',
+  '/asadero-con-afan/css/style.css',
+  '/asadero-con-afan/js/main.js',
+  '/asadero-con-afan/manifest.json'
 ];
 
 // INSTALAR — guarda los archivos en caché

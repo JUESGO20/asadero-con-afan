@@ -2,7 +2,7 @@
   "name": "Asadero Con Afán",
   "short_name": "Con Afán",
   "description": "El mejor pollo asado de Neiva, Huila",
-  "start_url": "/index.html",
+  "start_url": "/asadero-con-afan/index.html",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#0f0f0f",
