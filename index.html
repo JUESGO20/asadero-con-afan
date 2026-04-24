@@ -4,15 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Asadero Con Afán</title>
-  <link rel="stylesheet" href="/asadero-con-afan/css/style.css">
-  <link rel="preload" href="/asadero-con-afan/css/style.css" as="style">
-  <!-- Preconectar primero para ganar velocidad -->
+
+  <!-- CSS — ruta relativa, funciona en Live Server Y GitHub Pages -->
+  <link rel="preload" href="css/style.css" as="style">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap">
+
   <!-- PWA -->
-  <link rel="manifest" href="/manifest.json">
+  <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#FF5200">
   <link rel="icon" type="image/png" sizes="192x192" href="img/icon-192.png">
   <link rel="apple-touch-icon" href="img/icon-192.png">
@@ -20,27 +23,21 @@
 <body>
 
   <nav class="navbar">
-   <a href="index.html" class="logo">🔥 Asadero Con Afán</a>
-  
-   <!-- Botón hamburguesa (solo visible en móvil) -->
-   <button class="hamburguesa" id="hamburguesa" aria-label="Abrir menú">
-     <span></span>
-     <span></span>
-     <span></span>
-   </button>
-     
+    <a href="index.html" class="logo">🔥 Asadero Con Afán</a>
+    <button class="hamburguesa" id="hamburguesa" aria-label="Abrir menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
     <ul class="nav-links" id="nav-links">
-     <li><a href="index.html">Inicio</a></li>
-     <li><a href="menu.html">Menú</a></li>
-     <li><a href="equipo.html">Nuestro equipo</a></li>
-     <li><a href="contacto.html">Contáctanos</a></li>
+      <li><a href="index.html" class="activo">Inicio</a></li>
+      <li><a href="menu.html">Menú</a></li>
+      <li><a href="equipo.html">Nuestro equipo</a></li>
+      <li><a href="contacto.html">Contáctanos</a></li>
     </ul>
   </nav>
+  <div class="nav-overlay" id="nav-overlay"></div>
 
- <!-- Fondo oscuro al abrir menú -->
- <div class="nav-overlay" id="nav-overlay"></div>
-
-  <!-- HERO -->
   <section class="hero">
     <div class="hero-content">
       <h1>El mejor pollo asado<br><span>de Neiva</span></h1>
@@ -52,7 +49,6 @@
     </div>
   </section>
 
-  <!-- SOBRE NOSOTROS -->
   <section class="sobre-nosotros">
     <div class="sobre-contenido">
       <h2>¿Quiénes somos?</h2>
@@ -61,18 +57,15 @@
       <a href="equipo.html" class="btn-secundario">Conoce a nuestro equipo</a>
     </div>
     <div class="sobre-imagen">
-      <!-- Imagen temporal de pollo asado -->
-      <img src="https://placehold.co/500x420/E85D04/ffffff?text=Asadero+Con+Afan" alt="Pollo asado Asadero Con Afán">
+      <img src="https://placehold.co/500x420/E85D04/ffffff?text=Asadero+Con+Afan" 
+           alt="Pollo asado Asadero Con Afán" loading="lazy">
     </div>
   </section>
 
-  <!-- NUESTROS LOCALES -->
   <section class="locales" id="locales">
     <h2>Nuestros locales</h2>
     <p class="subtitulo">Encuéntranos en Neiva</p>
-
     <div class="locales-grid">
-
       <div class="local-card">
         <div class="local-info">
           <h3>Local Principal</h3>
@@ -83,24 +76,18 @@
             Pedir por WhatsApp
           </a>
         </div>
-        <!--coordenadas reales de locales Neiva -->
         <div class="mapa-contenedor">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11000!2d-75.26663443177092!3d2.902482868824606!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3b73ba3cce6869%3A0xf14bba6fc6b167e4!2sAsadero%20de%20Pollos%20CON%20AF%C3%81N!5e0!3m2!1ses-419!2sco!4v1776295455923!5m2!1ses-419!2sco"
-           width="600" 
-           height="450" 
-           style="border:0; border-radius:16px; width:100%; height:300px;" 
-           allowfullscreen="" 
-           loading="lazy" 
-           referrerpolicy="no-referrer-when-downgrade">
-
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11000!2d-75.26663443177092!3d2.902482868824606!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3b73ba3cce6869%3A0xf14bba6fc6b167e4!2sAsadero%20de%20Pollos%20CON%20AF%C3%81N!5e0!3m2!1ses-419!2sco!4v1776295455923!5m2!1ses-419!2sco"
+            style="border:0; border-radius:16px; width:100%; height:300px;"
+            allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
           </iframe>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- BOTÓN FLOTANTE WHATSAPP -->
   <a href="https://wa.me/573123256208?text=Hola!%20Quiero%20hacer%20un%20pedido"
      class="whatsapp-flotante" target="_blank">💬</a>
 
@@ -108,7 +95,7 @@
     <p>© 2025 Asadero Con Afán — Hecho con ❤️ en Neiva</p>
   </footer>
 
-  <script src="/asadero-con-afan/js/main.js" defer></script>
+  <!-- JS — ruta relativa -->
+  <script src="js/main.js" defer></script>
 </body>
 </html>
-  
