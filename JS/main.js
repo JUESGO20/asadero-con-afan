@@ -15,30 +15,33 @@ const overlay     = document.getElementById('nav-overlay');
 function abrirMenu() {
   hamburguesa.classList.add('abierto');
   navLinks.classList.add('abierto');
-  overlay.classList.add('visible');
-  document.body.style.overflow = 'hidden'; // evita scroll detrás
+  if (overlay) overlay.classList.add('visible');
+  document.body.style.overflow = 'hidden';
 }
 
 function cerrarMenu() {
   hamburguesa.classList.remove('abierto');
   navLinks.classList.remove('abierto');
-  overlay.classList.remove('visible');
+  if (overlay) overlay.classList.remove('visible');
   document.body.style.overflow = '';
 }
 
-hamburguesa.addEventListener('click', () => {
-  navLinks.classList.contains('abierto') ? cerrarMenu() : abrirMenu();
-});
+if (hamburguesa) {
+  hamburguesa.addEventListener('click', () => {
+    navLinks.classList.contains('abierto') ? cerrarMenu() : abrirMenu();
+  });
+}
 
-// Cerrar al hacer clic en el overlay
-overlay.addEventListener('click', cerrarMenu);
+if (overlay) {
+  overlay.addEventListener('click', cerrarMenu);
+}
 
-// Cerrar al hacer clic en un enlace del menú
-navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', cerrarMenu);
-});
+if (navLinks) {
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', cerrarMenu);
+  });
+}
 
-// Cerrar con tecla Escape
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') cerrarMenu();
 });
@@ -53,7 +56,7 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.12 });
 
 document.querySelectorAll(
-  '.tarjeta, .persona-card, .local-card, .vacante-card, .sobre-contenido, .sobre-imagen'
+  '.tarjeta, .persona-card, .local-card, .vacante-card, .vacante-nueva, .sobre-contenido, .sobre-imagen'
 ).forEach(el => {
   el.classList.add('reveal');
   observer.observe(el);

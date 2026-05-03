@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aplicar: Repartidor — Asadero Con Afán</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preload" href="/asadero-con-afan/css/style.css" as="style">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" media="print" onload="this.media='all'">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#FF5200">
+  <link rel="icon" type="image/png" sizes="192x192" href="img/icon-192.png">
+</head>
+<body>
+
+  <nav class="navbar">
+   <a href="index.html" class="logo">🔥 Asadero Con Afán</a>
+   <button class="hamburguesa" id="hamburguesa" aria-label="Abrir menú">
+     <span></span><span></span><span></span>
+   </button>
+    <ul class="nav-links" id="nav-links">
+     <li><a href="index.html">Inicio</a></li>
+     <li><a href="menu.html">Menú</a></li>
+     <li><a href="equipo.html">Nuestro equipo</a></li>
+     <li><a href="unete.html" class="activo">Únete & Opiniones</a></li>
+    </ul>
+  </nav>
+  <div class="nav-overlay" id="nav-overlay"></div>
+
+  <div class="formulario-pagina">
+    <a href="unete.html" class="volver-link">← Volver a vacantes</a>
+
+    <div class="vacante-badge-grande">🛵 Repartidor — Medio tiempo</div>
+    <h1>Aplica a esta vacante</h1>
+
+    <!-- 📝 PERSONALIZA: Cambia este texto según lo que busques -->
+    <p class="desc">
+      Buscamos repartidor con <strong>moto propia y licencia vigente</strong>, con
+      buen conocimiento de las calles de Neiva. Horario flexible de medio tiempo.
+      Puntualidad y buena actitud son lo más importante.
+    </p>
+
+    <div class="form-card">
+      <form action="https://formspree.io/f/meepyjwo" method="POST"
+            enctype="multipart/form-data" class="formulario-hv">
+
+        <input type="hidden" name="vacante" value="Repartidor">
+        <input type="hidden" name="_subject" value="Nueva aplicación: Repartidor — Asadero Con Afán">
+
+        <div class="fila-dos">
+          <div class="campo-grupo">
+            <label for="nombre">Nombre completo *</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
+          </div>
+          <div class="campo-grupo">
+            <label for="telefono">Teléfono / WhatsApp *</label>
+            <input type="tel" id="telefono" name="telefono" placeholder="300 000 0000" required>
+          </div>
+        </div>
+
+        <div class="campo-grupo">
+          <label for="email">Correo electrónico *</label>
+          <input type="email" id="email" name="email" placeholder="tu@correo.com" required>
+        </div>
+
+        <!-- Checkboxes de requisitos obligatorios (required en cada uno) -->
+        <div class="campo-grupo">
+          <label>Confirma que cumples los requisitos *</label>
+          <div class="requisitos-lista">
+            <label class="requisito-item">
+              <input type="checkbox" name="req-moto" value="Tiene moto propia" required>
+              Tengo moto propia en buen estado
+            </label>
+            <label class="requisito-item">
+              <input type="checkbox" name="req-licencia" value="Tiene licencia vigente" required>
+              Tengo licencia de conducción vigente
+            </label>
+            <label class="requisito-item">
+              <input type="checkbox" name="req-neiva" value="Conoce las calles de Neiva" required>
+              Conozco bien las calles de Neiva
+            </label>
+          </div>
+        </div>
+
+        <div class="campo-grupo">
+          <label for="moto-modelo">¿Qué moto tienes?</label>
+          <!-- 📝 Solo informativo, no es obligatorio -->
+          <input type="text" id="moto-modelo" name="moto-modelo"
+            placeholder="Ej: AKT 125, Honda Wave, Yamaha YBR...">
+        </div>
+
+        <div class="campo-grupo">
+          <label for="disponibilidad">¿En qué horarios puedes trabajar?</label>
+          <select id="disponibilidad" name="disponibilidad">
+            <option value="">— Selecciona —</option>
+            <option value="manana">Mañanas (11am – 3pm)</option>
+            <option value="tarde">Tardes (4pm – 9pm)</option>
+            <option value="ambos">Ambos horarios disponible</option>
+            <option value="fines">Fines de semana principalmente</option>
+          </select>
+        </div>
+
+        <div class="campo-grupo">
+          <label for="exp-domicilios">¿Has hecho domicilios antes?</label>
+          <select id="exp-domicilios" name="exp-domicilios">
+            <option value="">— Selecciona —</option>
+            <option value="si">Sí, tengo experiencia en domicilios</option>
+            <option value="no">No, pero tengo disponibilidad y ganas</option>
+          </select>
+        </div>
+
+        <div class="campo-grupo">
+          <label for="motivacion">¿Por qué quieres trabajar con nosotros?</label>
+          <textarea id="motivacion" name="motivacion" rows="3"
+            placeholder="Cuéntanos algo sobre ti..."></textarea>
+        </div>
+
+        <div class="campo-grupo">
+          <label for="cv">Adjunta tu hoja de vida (opcional)</label>
+          <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx">
+          <small>Formatos: PDF o Word. Máximo 5MB.</small>
+        </div>
+
+        <button type="submit" class="btn-enviar">Enviar mi aplicación ✉️</button>
+
+      </form>
+    </div>
+  </div>
+
+  <a href="https://wa.me/573123256208" class="whatsapp-flotante" target="_blank">💬</a>
+
+  <footer>
+    <p>© 2025 Asadero Con Afán — Hecho con ❤️ en Neiva</p>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

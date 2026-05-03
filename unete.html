@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Únete & Opiniones — Asadero Con Afán</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preload" href="/asadero-con-afan/css/style.css" as="style">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" media="print" onload="this.media='all'">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#FF5200">
+  <link rel="icon" type="image/png" sizes="192x192" href="img/icon-192.png">
+  <link rel="apple-touch-icon" href="img/icon-192.png">
+
+  <style>
+    /* ========================================
+       ESTILOS EXCLUSIVOS DE ESTA PÁGINA
+       No tocan el style.css global
+    ======================================== */
+
+    .unete-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 60px 40px 60px;
+      /* ✅ El padding inferior es 40px, no 80px
+         para que no haya espacio enorme antes de opiniones */
+    }
+
+    .seccion-titulo {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      color: var(--oscuro);
+      margin-bottom: 10px;
+    }
+
+    .seccion-subtitulo {
+      color: var(--texto-suave);
+      font-size: 15px;
+      margin-bottom: 48px;
+    }
+
+    /* --- Tarjetas de vacantes --- */
+    .vacantes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-bottom: 0;
+      /* ✅ Sin margen extra — la separación la da el margin-top
+         de la sección de opiniones */
+    }
+
+    .vacante-nueva {
+      background: white;
+      border-radius: 20px;
+      padding: 32px 28px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+      border-top: 4px solid var(--naranja);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      /* ✅ SIN clase reveal — las tarjetas aparecen inmediatamente */
+    }
+
+    .vacante-nueva:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(255,82,0,0.13);
+    }
+
+    .vacante-icono { font-size: 36px; line-height: 1; }
+
+    .vacante-nueva h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--oscuro);
+    }
+
+    .vacante-nueva p {
+      font-size: 14px;
+      color: var(--texto-suave);
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    .vacante-meta { display: flex; align-items: center; gap: 10px; }
+
+    .badge-tipo {
+      background: #fff3e0;
+      color: #e65100;
+      font-size: 11px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+
+    .btn-aplicar {
+      display: inline-block;
+      background: var(--naranja);
+      color: white;
+      padding: 12px 26px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: center;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      margin-top: 4px;
+    }
+
+    .btn-aplicar:hover {
+      background: var(--naranja-vivo);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255,82,0,0.35);
+    }
+
+    /* ==============================
+       SECCIÓN DE OPINIONES
+    ============================== */
+    .opiniones-seccion {
+      background: var(--gris-claro);
+      padding: 60px 60px 80px 60px;
+      margin-top: 60px;
+      /* ✅ margin-top separa visualmente vacantes de opiniones
+         sin crear un hueco raro */
+    }
+
+    .opiniones-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .opiniones-titulo-seccion {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      color: var(--oscuro);
+      margin-bottom: 10px;
+    }
+
+    .opiniones-subtitulo {
+      color: var(--texto-suave);
+      font-size: 15px;
+      margin-bottom: 48px;
+    }
+
+    /* ✅ Dos columnas: formulario | reseñas */
+    .opiniones-layout {
+      display: grid;
+      grid-template-columns: 400px 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    /* --- Formulario de opinión --- */
+    .opinion-form-card {
+      background: white;
+      border-radius: 24px;
+      padding: 36px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+      /* ✅ SIN clase reveal — siempre visible desde que carga la página */
+    }
+
+    .opinion-form-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: var(--oscuro);
+      margin-bottom: 6px;
+    }
+
+    .opinion-form-card .form-desc {
+      color: var(--texto-suave);
+      font-size: 13px;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    .opinion-form { display: flex; flex-direction: column; gap: 16px; }
+
+    .campo-opinion { display: flex; flex-direction: column; gap: 6px; }
+
+    .campo-opinion label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--oscuro);
+    }
+
+    .campo-opinion input,
+    .campo-opinion textarea {
+      padding: 12px 14px;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 12px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      color: var(--texto);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      background: white;
+      resize: vertical;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .campo-opinion input:focus,
+    .campo-opinion textarea:focus {
+      outline: none;
+      border-color: var(--naranja);
+      box-shadow: 0 0 0 3px rgba(255,82,0,0.1);
+    }
+
+    /* Estrellas interactivas */
+    .estrellas-grupo { display: flex; flex-direction: column; gap: 8px; }
+
+    .estrellas-grupo > label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--oscuro);
+    }
+
+    .estrellas {
+      display: flex;
+      gap: 4px;
+      flex-direction: row-reverse;
+      /* ✅ row-reverse es el truco: permite que el CSS
+         ilumine "hacia atrás" cuando pasas el mouse */
+      justify-content: flex-end;
+    }
+
+    .estrellas input { display: none; }
+
+    .estrellas label {
+      font-size: 30px;
+      cursor: pointer;
+      color: #ddd;
+      transition: color 0.15s;
+      line-height: 1;
+    }
+
+    /* Cuando seleccionas o pasas el mouse: se iluminan */
+    .estrellas input:checked ~ label,
+    .estrellas label:hover,
+    .estrellas label:hover ~ label {
+      color: #f5a623;
+    }
+
+    .btn-opinion {
+      background: var(--naranja);
+      color: white;
+      border: none;
+      padding: 13px 28px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      font-family: 'Poppins', sans-serif;
+      width: 100%;
+      text-align: center;
+    }
+
+    .btn-opinion:hover {
+      background: var(--naranja-vivo);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255,82,0,0.35);
+    }
+
+    .btn-opinion:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .mensaje-exito {
+      display: none;
+      background: #e8f5e9;
+      color: #2e7d32;
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      border-left: 4px solid #43a047;
+    }
+
+    /* --- Columna derecha: reseñas --- */
+    .columna-reseñas { display: flex; flex-direction: column; }
+
+    .reseñas-titulo {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      color: var(--oscuro);
+      margin-bottom: 6px;
+    }
+
+    .reseñas-meta {
+      color: var(--texto-suave);
+      font-size: 14px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .promedio-estrellas { color: #f5a623; font-size: 18px; }
+
+    /* ✅ Scroll en la columna de reseñas:
+       cuando hay muchas, aparece barra naranja
+       y el formulario se queda fijo a la izquierda */
+    .reseñas-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-height: 600px;
+      overflow-y: auto;
+      padding-right: 6px;
+    }
+
+    .reseñas-grid::-webkit-scrollbar { width: 5px; }
+    .reseñas-grid::-webkit-scrollbar-track {
+      background: #f0f0f0;
+      border-radius: 10px;
+    }
+    .reseñas-grid::-webkit-scrollbar-thumb {
+      background: var(--naranja);
+      border-radius: 10px;
+    }
+
+    .reseña-card {
+      background: white;
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .reseña-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(255,82,0,0.1);
+    }
+
+    .reseña-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .reseña-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: var(--naranja);
+      color: white;
+      font-weight: 700; font-size: 16px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .reseña-info h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--oscuro);
+      margin-bottom: 2px;
+    }
+
+    .reseña-fecha { font-size: 11px; color: #aaa; }
+
+    .reseña-estrellas {
+      color: #f5a623;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .reseña-texto {
+      color: var(--texto-suave);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .sin-reseñas {
+      text-align: center;
+      padding: 40px 20px;
+      color: #bbb;
+      font-size: 14px;
+    }
+
+    .sin-reseñas span { font-size: 40px; display: block; margin-bottom: 10px; }
+
+    .cargando {
+      text-align: center;
+      padding: 40px;
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    /* ==============================
+       RESPONSIVO MÓVIL
+    ============================== */
+    @media (max-width: 900px) {
+      /* En tablets/móvil: las columnas se apilan */
+      .opiniones-layout { grid-template-columns: 1fr; }
+      /* El scroll desaparece en móvil, se ven todas */
+      .reseñas-grid { max-height: none; overflow-y: visible; }
+    }
+
+    @media (max-width: 768px) {
+      .unete-wrapper { padding: 50px 20px 30px 20px; }
+      .opiniones-seccion { padding: 40px 20px 60px 20px; margin-top: 30px; }
+      .opinion-form-card { padding: 24px 18px; }
+      .vacantes-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+   <a href="index.html" class="logo">🔥 Asadero Con Afán</a>
+   <button class="hamburguesa" id="hamburguesa" aria-label="Abrir menú">
+     <span></span>
+     <span></span>
+     <span></span>
+   </button>
+    <ul class="nav-links" id="nav-links">
+     <li><a href="index.html">Inicio</a></li>
+     <li><a href="menu.html">Menú</a></li>
+     <li><a href="equipo.html">Nuestro equipo</a></li>
+     <li><a href="unete.html" class="activo">Únete & Opiniones</a></li>
+    </ul>
+  </nav>
+  <div class="nav-overlay" id="nav-overlay"></div>
+
+  <section class="pagina-header">
+    <h1>Únete & Opiniones</h1>
+    <p>Haz parte del equipo o cuéntanos tu experiencia</p>
+  </section>
+
+  <!-- ================================================
+       SECCIÓN 1: VACANTES
+       Para agregar una vacante nueva:
+       → Copia un bloque .vacante-nueva completo
+       → Pégalo dentro de .vacantes-grid
+       → Cambia el icono, título, descripción y href del botón
+       Para quitar una: borra ese bloque completo
+  ================================================ -->
+  <div class="unete-wrapper">
+    <h2 class="seccion-titulo">Vacantes disponibles</h2>
+    <p class="seccion-subtitulo">Selecciona la vacante que te interesa y completa el formulario.</p>
+
+    <div class="vacantes-grid">
+
+      <div class="vacante-nueva">
+        <div class="vacante-icono">👨‍🍳</div>
+        <h3>Auxiliar de cocina</h3>
+        <p>Buscamos persona con actitud positiva y dispuesta a aprender. No se requiere experiencia previa — nosotros te enseñamos.</p>
+        <div class="vacante-meta">
+          <span class="badge-tipo">Tiempo completo</span>
+        </div>
+        <a href="formulario-cocina.html" class="btn-aplicar">Aplicar a esta vacante →</a>
+      </div>
+
+      <div class="vacante-nueva">
+        <div class="vacante-icono">🧾</div>
+        <h3>Cajero / Atención al cliente</h3>
+        <p>Persona amable, responsable y con buenas habilidades de comunicación. Experiencia en caja deseable pero no obligatoria.</p>
+        <div class="vacante-meta">
+          <span class="badge-tipo">Tiempo completo</span>
+        </div>
+        <a href="formulario-cajero.html" class="btn-aplicar">Aplicar a esta vacante →</a>
+      </div>
+
+      <div class="vacante-nueva">
+        <div class="vacante-icono">🛵</div>
+        <h3>Repartidor</h3>
+        <p>Con moto propia y licencia de conducción vigente. Conocimiento de las calles de Neiva. Buena actitud y puntualidad.</p>
+        <div class="vacante-meta">
+          <span class="badge-tipo">Medio tiempo</span>
+        </div>
+        <a href="formulario-repartidor.html" class="btn-aplicar">Aplicar a esta vacante →</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================================================
+       SECCIÓN 2: OPINIONES
+       Izquierda: formulario para escribir opinión
+       Derecha: reseñas con scroll propio
+       
+       💡 PARA EL FUTURO — base de datos compartida:
+       Cuando quieras que todos vean las mismas opiniones
+       (no solo las del propio navegador), conectamos
+       Firebase Firestore. Lo hacemos en una sesión.
+  ================================================ -->
+  <section class="opiniones-seccion">
+    <div class="opiniones-inner">
+
+      <h2 class="opiniones-titulo-seccion">Opiniones</h2>
+      <p class="opiniones-subtitulo">Lo que dicen quienes ya probaron el mejor pollo de Neiva.</p>
+
+      <div class="opiniones-layout">
+
+        <!-- COLUMNA IZQUIERDA: formulario -->
+        <!-- ✅ Sin clase "reveal" para que siempre se vea -->
+        <div class="opinion-form-card">
+          <h3>¿Ya probaste nuestro pollo?</h3>
+          <p class="form-desc">Cuéntanos tu experiencia. Tu opinión nos ayuda a mejorar y a otros clientes a elegirnos.</p>
+
+          <form class="opinion-form" id="opinion-form" novalidate>
+
+            <div class="campo-opinion">
+              <label for="op-nombre">Tu nombre *</label>
+              <input type="text" id="op-nombre" placeholder="¿Cómo te llamas?" maxlength="50">
+            </div>
+
+            <div class="campo-opinion">
+              <label for="op-plato">¿Qué pediste? (opcional)</label>
+              <input type="text" id="op-plato" placeholder="Ej: medio pollo + yuca" maxlength="80">
+            </div>
+
+            <div class="estrellas-grupo">
+              <label>Calificación *</label>
+              <div class="estrellas">
+                <input type="radio" name="rating" id="star5" value="5"><label for="star5">★</label>
+                <input type="radio" name="rating" id="star4" value="4"><label for="star4">★</label>
+                <input type="radio" name="rating" id="star3" value="3"><label for="star3">★</label>
+                <input type="radio" name="rating" id="star2" value="2"><label for="star2">★</label>
+                <input type="radio" name="rating" id="star1" value="1"><label for="star1">★</label>
+              </div>
+            </div>
+
+            <div class="campo-opinion">
+              <label for="op-comentario">Tu comentario *</label>
+              <textarea id="op-comentario" rows="4"
+                placeholder="Cuéntanos tu experiencia..." maxlength="500"></textarea>
+            </div>
+
+            <!-- Mensaje verde que aparece al publicar -->
+            <div class="mensaje-exito" id="msg-exito">
+              ¡Gracias por tu opinión! 🎉 Ya aparece en la lista.
+            </div>
+
+            <!-- ✅ type="button" — no dispara validación HTML
+                 nativa que causaba el bloqueo -->
+            <button type="button" class="btn-opinion" id="btn-submit">
+              Publicar mi opinión ⭐
+            </button>
+
+          </form>
+        </div>
+
+        <!-- COLUMNA DERECHA: reseñas con scroll -->
+        <div class="columna-reseñas">
+          <h2 class="reseñas-titulo">Lo que dice nuestra gente</h2>
+          <div class="reseñas-meta">
+            <span class="promedio-estrellas" id="promedio-estrellas"></span>
+            <span id="promedio-texto">Cargando...</span>
+          </div>
+          <!-- Las tarjetas se generan aquí automáticamente con JS -->
+          <div class="reseñas-grid" id="reseñas-grid">
+            <div class="cargando">Cargando opiniones...</div>
+          </div>
+        </div>
+
+      </div><!-- fin opiniones-layout -->
+
+    </div>
+  </section>
+
+  <a href="https://wa.me/573123256208" class="whatsapp-flotante" target="_blank">💬</a>
+
+  <footer>
+    <p>© 2025 Asadero Con Afán — Hecho con ❤️ en Neiva</p>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+
+  <script>
+    // ================================================
+    //  MOTOR DE OPINIONES
+    //  Todo se guarda en el navegador de cada visitante.
+    //  No necesita servidor ni cuenta en ningún servicio.
+    // ================================================
+
+    var STORAGE_KEY = 'asadero_opiniones_v1';
+
+    // 💬 OPINIONES DE EJEMPLO
+    // Aparecen la primera vez que alguien abre la página.
+    // Puedes cambiar: nombre, plato, rating (1-5) y comentario.
+    // Para quitar una: borra el bloque { } completo con su coma.
+    var OPINIONES_INICIALES = [
+      {
+        id: 'init1',
+        nombre: 'Valentina M.',
+        plato: 'Pollo entero + yuca',
+        rating: 5,
+        comentario: 'El mejor pollo de Neiva, sin duda. La yuca estaba perfecta y el servicio muy amable. Volvemos la próxima semana.',
+        fecha: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString()
+      },
+      {
+        id: 'init2',
+        nombre: 'Andrés T.',
+        plato: 'Medio pollo + arroz',
+        rating: 5,
+        comentario: '¡Qué sabor! El marinado es diferente a cualquier otro asadero. Lo recomiendo a toda mi familia.',
+        fecha: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString()
+      },
+      {
+        id: 'init3',
+        nombre: 'Carolina R.',
+        plato: 'Cuarto de pollo',
+        rating: 4,
+        comentario: 'Muy rico y a buen precio. La atención fue excelente. Le subo al 5 la próxima si llevo el pollo entero.',
+        fecha: new Date(Date.now() - 8 * 24 * 60 * 60 * 1000).toISOString()
+      }
+    ];
+
+    function cargarOpiniones() {
+      try {
+        var datos = localStorage.getItem(STORAGE_KEY);
+        if (datos) return JSON.parse(datos);
+      } catch (e) {}
+      // Primera vez: carga las de ejemplo
+      guardarOpiniones(OPINIONES_INICIALES);
+      return OPINIONES_INICIALES;
+    }
+
+    function guardarOpiniones(lista) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(lista));
+      } catch (e) {}
+    }
+
+    function formatearFecha(isoString) {
+      var fecha = new Date(isoString);
+      var diffDias = Math.floor((new Date() - fecha) / (1000 * 60 * 60 * 24));
+      if (diffDias === 0) return 'Hoy';
+      if (diffDias === 1) return 'Ayer';
+      if (diffDias < 7) return 'Hace ' + diffDias + ' días';
+      return fecha.toLocaleDateString('es-CO', {
+        day: 'numeric', month: 'long', year: 'numeric'
+      });
+    }
+
+    function generarEstrellas(rating) {
+      return '★'.repeat(rating) + '☆'.repeat(5 - rating);
+    }
+
+    function renderizarOpiniones() {
+      var lista    = cargarOpiniones();
+      var grid     = document.getElementById('reseñas-grid');
+      var promedio = lista.length
+        ? (lista.reduce(function(acc, op) { return acc + op.rating; }, 0) / lista.length).toFixed(1)
+        : 0;
+      var estrellasLlenas = Math.round(Number(promedio));
+
+      document.getElementById('promedio-estrellas').textContent =
+        '★'.repeat(estrellasLlenas) + '☆'.repeat(5 - estrellasLlenas);
+      document.getElementById('promedio-texto').textContent =
+        promedio + ' de 5 — ' + lista.length +
+        (lista.length === 1 ? ' opinión' : ' opiniones');
+
+      if (!lista.length) {
+        grid.innerHTML =
+          '<div class="sin-reseñas"><span>💬</span>' +
+          'Aún no hay opiniones. ¡Sé el primero!</div>';
+        return;
+      }
+
+      // Ordenar del más reciente al más antiguo
+      var ordenadas = lista.slice().sort(function(a, b) {
+        return new Date(b.fecha) - new Date(a.fecha);
+      });
+
+      grid.innerHTML = ordenadas.map(function(op) {
+        return (
+          '<div class="reseña-card">' +
+            '<div class="reseña-header">' +
+              '<div class="reseña-avatar">' +
+                op.nombre.trim().charAt(0).toUpperCase() +
+              '</div>' +
+              '<div class="reseña-info">' +
+                '<h4>' + op.nombre + '</h4>' +
+                '<span class="reseña-fecha">' +
+                  formatearFecha(op.fecha) +
+                  (op.plato ? ' · ' + op.plato : '') +
+                '</span>' +
+              '</div>' +
+            '</div>' +
+            '<div class="reseña-estrellas">' + generarEstrellas(op.rating) + '</div>' +
+            '<p class="reseña-texto">' + op.comentario + '</p>' +
+          '</div>'
+        );
+      }).join('');
+    }
+
+    // Publicar opinión al hacer clic en el botón
+    document.getElementById('btn-submit').addEventListener('click', function() {
+      var nombre     = document.getElementById('op-nombre').value.trim();
+      var plato      = document.getElementById('op-plato').value.trim();
+      var comentario = document.getElementById('op-comentario').value.trim();
+      var ratingInput = document.querySelector('input[name="rating"]:checked');
+
+      // Validación manual
+      if (!nombre || !comentario || !ratingInput) {
+        alert('Por favor completa tu nombre, elige una calificación y escribe tu comentario.');
+        return;
+      }
+
+      var nuevaOpinion = {
+        id: 'op_' + Date.now(),
+        nombre: nombre,
+        plato: plato,
+        rating: parseInt(ratingInput.value),
+        comentario: comentario,
+        fecha: new Date().toISOString()
+      };
+
+      var lista = cargarOpiniones();
+      lista.unshift(nuevaOpinion); // Añade al principio
+      guardarOpiniones(lista);
+
+      // Mostrar mensaje de éxito
+      document.getElementById('msg-exito').style.display = 'block';
+      document.getElementById('btn-submit').disabled = true;
+
+      // Limpiar formulario después de 2 segundos
+      setTimeout(function() {
+        document.getElementById('op-nombre').value    = '';
+        document.getElementById('op-plato').value     = '';
+        document.getElementById('op-comentario').value = '';
+        document.querySelectorAll('input[name="rating"]').forEach(function(r) {
+          r.checked = false;
+        });
+        document.getElementById('msg-exito').style.display = 'none';
+        document.getElementById('btn-submit').disabled = false;
+        renderizarOpiniones();
+      }, 2000);
+    });
+
+    // Arrancar al cargar la página
+    renderizarOpiniones();
+  </script>
+
+</body>
+</html>
