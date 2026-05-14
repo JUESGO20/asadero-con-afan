@@ -66,7 +66,7 @@ document.querySelectorAll(
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker
-      .register('/sw.js')
+      .register('sw.js')
       .then(registro => {
         console.log('Service Worker registrado correctamente:', registro.scope);
       })

@@ -2,14 +2,14 @@ const CACHE_NAME = 'asadero-con-afan-v1';
 
 // Archivos que se guardan para funcionar sin internet
 const ARCHIVOS_CACHE = [
-  '/asadero-con-afan/',
-  '/asadero-con-afan/index.html',
-  '/asadero-con-afan/menu.html',
-  '/asadero-con-afan/equipo.html',
-  '/asadero-con-afan/contacto.html',
+  './',
+  'index.html',
+  'menu.html',
+  'equipo.html',
+  'unete.html',
   'css/style.css',
   'js/main.js',
-  '/asadero-con-afan/manifest.json'
+  'manifest.json'
 ];
 
 // INSTALAR — guarda los archivos en caché
@@ -60,7 +60,7 @@ self.addEventListener('fetch', evento => {
           })
           .catch(() => {
             // Si no hay internet y no está en caché, muestra página de inicio
-            return caches.match('/index.html');
+            return caches.match('index.html');
           });
       })
   );
