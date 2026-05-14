@@ -7,8 +7,8 @@ const ARCHIVOS_CACHE = [
   '/asadero-con-afan/menu.html',
   '/asadero-con-afan/equipo.html',
   '/asadero-con-afan/contacto.html',
-  '/asadero-con-afan/css/style.css',
-  '/asadero-con-afan/js/main.js',
+  'css/style.css',
+  'js/main.js',
   '/asadero-con-afan/manifest.json'
 ];
 
